@@ -1,0 +1,59 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login page</title>
+    <style>
+        .main{
+            background-color: rgba(53, 151, 151, 0.596);
+            width:300px;
+            margin-top:160px;
+            padding:20px;
+            border-radius:10px ;
+        }
+        .main input{
+            padding: 5px;
+            border: none;
+            border-bottom: 2px solid red;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            width: 200px;
+            height: 25px;
+            padding-left: 20px;
+
+        }
+        .main button{
+            width: 220px;
+            height: 35px;
+            padding: 5px;
+            background-color: brown;
+            color:white;
+            margin-bottom: 60px;
+
+        }
+    </style>
+</head>
+<body background="{% static 'images/fruuuits.jpg' %}">
+    <center>
+        <div class="main">
+            <h1>
+                Login
+
+            </h1>
+            <form action="loginsub/">
+            <input type="text" placeholder="Username" required name="uname"><br>
+            <input type="password" placeholder="Password" required name="pname"><br>
+            <button type="submit">submit</button>
+            </form>
+
+        </div>
+
+    </center>
+    
+
+    
+</body>
+</html>

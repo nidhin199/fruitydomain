@@ -1,0 +1,63 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        .main{
+            background-color: rgba(216, 228, 220, 0.76);
+            width:300px;
+            margin-top:160px;
+            padding:20px;
+            border-radius:10px ;
+        }
+        .main input{
+            padding: 5px;
+            border: none;
+            border-bottom: 2px solid rgb(255, 230, 0);
+            border-radius: 5px;
+            margin-bottom: 15px;
+            width: 200px;
+            height: 25px;
+            padding-left: 20px;
+
+        }
+        .main button{
+            width: 220px;
+            height: 35px;
+            padding: 5px;
+            background-color: brown;
+            color:white;
+            margin-bottom: 60px;
+
+        }
+    </style>
+</head>
+<body background="{% static 'images/fruit3.avif' %}">
+    <center>
+        <div class="main">
+            <h1>
+                Register
+
+            </h1>
+            <form action="registersub">
+            <input type="text" placeholder="Username" required name="uname"><br>
+            <input type="text" placeholder="first name" name="fname"><br>
+            <input type="text" placeholder="last name" name="lname"><br>
+            <input type="text" placeholder="Email" required name="ename"><br>
+            <input type="password" placeholder="Password" required name="pname"><br>
+            <input type="password" placeholder="Repassword" required name="rpname"><br>
+            <button>submit</button>
+            </form>
+
+        </div>
+
+    </center>
+    
+
+    
+</body>
+</html>
