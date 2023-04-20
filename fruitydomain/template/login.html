@@ -43,7 +43,8 @@
                 Login
 
             </h1>
-            <form action="loginsub/">
+            <form action="loginsub/" method="post">
+                {% csrf_token %}
             <input type="text" placeholder="Username" required name="uname"><br>
             <input type="password" placeholder="Password" required name="pname"><br>
             <button type="submit">submit</button>
