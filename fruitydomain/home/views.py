@@ -10,46 +10,50 @@ def index(request):
 def test(request):
     return render(request,'text.html',{'val':'java'})
 
+
+
+
 def login(request):
-    return render(request,'login.html')
+    if request.method=='POST':
+        uname=request.POST['uname']
+        pname=request.POST['pname']
+        user=auth.authenticate(username=uname,password=pname)
+        if user:
+            auth.login(request,user)
+            return redirect('/')
+        msg= "invalid username and password"
+
+        return render(request,'login.html',{'msg':msg})
+    else:
+         return render(request,'login.html')
+
 
 def register(request):
-    return render(request,'register.html')
+    if request.method=='POST':
+        uname=request.POST['uname']
+        fname=request.POST['fname']
+        lname=request.POST['lname']
+        ename=request.POST['ename']
+        pname=request.POST['pname']
+        rpname=request.POST['rpname']
+        if pname ==rpname:
+            if User.objects.filter(username=uname):
+                msg='username is already taken'
+                return render(request,'register.html',{'msg':msg})
+            elif User.objects.filter(email=ename):
+                msg='email is already registered'
+                return render(request,'register.html',{'msg':msg})
+            else:
+                user=User.objects.create_user(first_name=fname,last_name=lname,password=pname,username=uname,email=ename)
+                user.save();
+                auth.login(request,user)
 
-def loginsub(request):
-    uname=request.POST['uname']
-    pname=request.POST['pname']
-    user=auth.authenticate(username=uname,password=pname)
-    if user:
-        auth.login(request,user)
-        return redirect('/')
-
-    return render(request,'login.html')
-
-def registersub(request):
-    uname=request.POST['uname']
-    fname=request.POST['fname']
-    lname=request.POST['lname']
-    ename=request.POST['ename']
-    pname=request.POST['pname']
-    rpname=request.POST['rpname']
-    if pname ==rpname:
-        if User.objects.filter(username=uname):
-            msg='username is already taken'
-            return render(request,'text.html',{'val':msg})
-        elif User.objects.filter(email=ename):
-            msg='email is already registered'
-            return render(request,'text.html',{'val':msg})
+                return redirect('/')
         else:
-            user=User.objects.create_user(first_name=fname,last_name=lname,password=pname,username=uname,email=ename)
-            user.save();
-
-            return redirect('/')
+            msg="password do not match"
+            return render(request,'register.html',{'msg':msg})
     else:
-        msg="password do not match"
-
-
-        return render(request,'text.html',{'val':msg})
+        return render(request,'register.html')
 
     
 

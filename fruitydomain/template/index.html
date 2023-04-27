@@ -94,7 +94,9 @@
                   <a class="nav-link" href="fruit.html">Our Fruit </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="testimonial.html">Testimonial</a>
+                  {% if user.is_authenticated %}
+                  <a class="nav-link" href="testimonial.html"><b>{{user.username}}</b></a>
+                  {% endif %}
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="register/">Register</a>

@@ -47,7 +47,8 @@
                 Register
 
             </h1>
-            <form action="registersub/" method="post">
+            <font color="black">{{msg}}</font>
+            <form action="{% url 'registerpage' %}" method="post">
                 {% csrf_token %}
                 <input type="text" placeholder="Username" required name="uname"><br>
                 <input type="text" placeholder="first name" name="fname"><br>
