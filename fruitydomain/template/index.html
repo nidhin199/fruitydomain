@@ -192,14 +192,13 @@
       </div>
     </div>
     <div class="container-fluid">
-
       <div class="fruit_container">
-        {% for data in 'abcd' %}
+        {% for i in data %}
         <div class="box">
-          <img src="{% static 'images/f-1.jpg' %}" alt="">
+          <img src="{{i.img.url}}" alt="">
           <div class="link_box">
             <h5>
-              Orange
+              {{i.name}}
             </h5>
             <a href="">
               Buy Now
@@ -229,11 +228,11 @@
           <div class="carousel-item active">
             <div class="client_container layout_padding-top">
               <div class="img-box">
-                <img src="{% static 'images/client-img.png' %}" alt="">
+                <img src="{% static 'images/tom.jpg' %}" alt="">
               </div>
               <div class="detail-box">
                 <h5>
-                  sasi
+                  Tom
                 </h5>
                 <p>
                   <img src="{% static 'images/left-quote.png' %}" alt="">
@@ -251,11 +250,11 @@
           <div class="carousel-item">
             <div class="client_container layout_padding-top">
               <div class="img-box">
-                <img src="{% static 'images/client-img.png' %}" alt="">
+                <img src="{% static 'images/john.jpeg' %}" alt="">
               </div>
               <div class="detail-box">
                 <h5>
-                  sasi
+                  John
                 </h5>
                 <p>
                   <img src="{% static 'images/left-quote.png' %}" alt="">
@@ -273,11 +272,11 @@
           <div class="carousel-item">
             <div class="client_container layout_padding-top">
               <div class="img-box">
-                <img src="{% static 'images/client-img.png' %}" alt="">
+                <img src="{% static 'images/Johny.jpg' %}" alt="">
               </div>
               <div class="detail-box">
                 <h5>
-                  sasi
+                  Johny
                 </h5>
                 <p>
                   <img src="{% static 'images/left-quote.png' %}" alt="">
