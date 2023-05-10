@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from .models import fruits
+from django.shortcuts import render,redirect
+from .models import fruits,comment
+
 
 def test(r):
     return render(r,'text.html')
@@ -10,7 +11,12 @@ def about(r):
     return render(r,'about.html',{'fruit':obj})
 
 def cmt(r):
-    return render(r,'text.html')
+    imsg=r.GET["cmtmsg"]
+    usname=r.GET['user']
+    idpro=r.GET['id']
+    obj=comment.objects.create(user=usname,msg=imsg,proid_id=idpro,like=0)
+    obj.save()
+    return redirect('/product/?id='+idpro)
 
 def like(r):
     return render(r,'text.html')

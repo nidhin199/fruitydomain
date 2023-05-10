@@ -171,18 +171,24 @@
       <!--comment section-->
       <h2>comment</h2>
       <div class="commentbox">
-        {% for i in 'abcde' %}
+        {% if fruit.cmt.all %}
+        {% for i in fruit.cmt.all %}
       <p>
-        <b>good product</b>&nbsp;&nbsp;<small>04/05/2023 11:41am</small><br>
-        <small>john cena</small>&nbsp;
-        <font>20</font>
+        <b>{{i.user}}</b>&nbsp;&nbsp;<small>{{i.date}}</small><br>
+        <small>{{i.msg}}</small>&nbsp;
+        <font>{{i.like}}</font>
         <a href="like/"><img src="{% static 'images/like.png' %}" width="20px" height="20px"></a>
       </p>
       {% endfor %}
+      {% else %}
+      <h2>no comment here</h2>
+      {% endif %}
     </div>
-    <form action="cmt">
+    <form action="cmt" method="GET">
     <div class="commententry">
-      <textarea name=""id=""cols="30" rows="3" placeholder="enter your comment..."></textarea><br>
+      <textarea name="cmtmsg"id=""cols="30" rows="3" placeholder="enter your comment..."></textarea><br>
+      <input type="hidden" value="{{user.username}}" name="user">
+      <input type="hidden" value="{{fruit.id}}" name="id">
       <button>Submit</button>
     </form>
   
