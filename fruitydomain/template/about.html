@@ -75,6 +75,13 @@
       
       
     }
+    .recent{
+      margin-left:10px ;
+      border-radius: 25px;
+    }
+    .recent:hover{
+      scale: 1.1;
+    }
   </style>
 </head>
 
@@ -145,6 +152,9 @@
           <div class="img-box">
             <img src="{{fruit.img.url}}" alt="">
           </div>
+          {% for i in rec %}
+          <a href="{% url 'prod' %}?id={{i.id}}"><img src="{{i.img.url}}" width="150px" height="150" class="recent"></a>
+          {% endfor %}
         </div>
         <div class="col-md-5">
           <div class="detail-box">
@@ -177,7 +187,7 @@
         <b>{{i.user}}</b>&nbsp;&nbsp;<small>{{i.date}}</small><br>
         <small>{{i.msg}}</small>&nbsp;
         <font>{{i.like}}</font>
-        <a href="like/"><img src="{% static 'images/like.png' %}" width="20px" height="20px"></a>
+        <a href="like/?id={{i.id}}"><img src="{% static 'images/like.png' %}" width="20px" height="20px"></a>
       </p>
       {% endfor %}
       {% else %}
@@ -186,7 +196,7 @@
     </div>
     <form action="cmt" method="GET">
     <div class="commententry">
-      <textarea name="cmtmsg"id=""cols="30" rows="3" placeholder="enter your comment..."></textarea><br>
+      <textarea name="cmtmsg"id=""cols="30" rows="3" placeholder="enter your comment..." required></textarea><br>
       <input type="hidden" value="{{user.username}}" name="user">
       <input type="hidden" value="{{fruit.id}}" name="id">
       <button>Submit</button>
