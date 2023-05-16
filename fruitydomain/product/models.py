@@ -9,6 +9,10 @@ class fruits(models.Model):
     date=models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.name
+    
+    class Meta:
+        ordering=('-date',)
+
 
 class comment(models.Model):
     proid=models.ForeignKey(fruits,related_name='cmt',on_delete=models.CASCADE)

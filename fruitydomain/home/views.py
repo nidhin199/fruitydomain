@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from product.models import fruits
 
 
+
 def index(request):
     obj=fruits.objects.all()
     if 'username' in request.COOKIES:
@@ -70,6 +71,9 @@ def logout(request):
     lg=redirect('/')
     lg.delete_cookie('username')
     return lg
+
+def rss(request):
+    return render(request,'text.html')
 
     
 
