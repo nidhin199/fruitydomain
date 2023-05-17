@@ -6,18 +6,23 @@ from product.models import fruits
 
 
 def index(request):
-    obj=fruits.objects.all()
-    if 'username' in request.COOKIES:
-        uname=request.COOKIES['username']
+    if request.method=='POST':
+        a=request.POST['query']  
+        obj=fruits.objects.filter(name__istartswith=a)  
     else:
-        uname=""
+        obj=fruits.objects.all()
+   
     
-    return render(request,'index.html',{'data':obj,'name':uname})
+    return render(request,'index.html',{'data':obj})
 
 
 
 def test(request):
-    return render(request,'text.html',{'val':'java'})
+    query=request.GET['query']
+    return render(request,'text.html',{'msg':query})
+
+def search(request):
+    return render(request,'search.html')
 
 
 
